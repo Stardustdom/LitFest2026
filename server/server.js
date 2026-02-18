@@ -1,3 +1,6 @@
+require('dotenv').config();
+
+
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -9,8 +12,9 @@ app.use(cors());
 app.use(express.json());
 
 // 🔹 CONNECT TO MONGODB ATLAS
-mongoose.connect(process.env.MONGO_URI);
-
+mongoose
+  .connect(process.env.MONGO_URI
+  )
   .then(() => console.log("✅ MongoDB Connected"))
   .catch(err => console.error("❌ MongoDB error:", err));
 
@@ -60,7 +64,7 @@ app.get("/check-institution", async (req, res) => {
 
   // Case-insensitive search
   const existing = await Registration.findOne({
-    college: { $regex: new RegExp('^${college}$', "i") }
+college: { $regex: new RegExp(`^${college}$`, "i") }
   });
 
   // ✅ If institution already exists
