@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Join Event | OBSCURA</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="cursor.png">
+    <style>
+        /* ===== GLOBAL STYLES ===== */
+        * {
+            cursor: none !important;
+        }
+
+        /* Main cursor dot */
+        .cursor {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 42px;
+            height: 42px;
+            background: url("cursor.png") no-repeat center;
+            background-size: contain;
+            pointer-events: none;
+            z-index: 10000;
+            transform: translate(-50%, -50%);
+            transition: transform 0.08s ease;
+        }
+
+        .cursor.click {
+            transform: translate(-50%, -50%) scale(0.75);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Courier New', monospace;
+            background: #000;
+            color: #fff;
+        }
+
+        a {
+            color: #ff0000;
+            text-decoration: none;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            padding: 40px;
+            justify-content: center;
+        }
+
+        .container {
+            min-height: 100vh;
+        }
+
+        html, body {
+            height: 100%;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        /* ===== LEFT SECTION: EVENT INFO ===== */
+        .event-info {
+            flex: 1 1 400px;
+            max-width: 600px;
+        }
+
+        .event-title {
+            font-family: 'ITC Benguiat Std', serif;
+            font-size: 2.5rem;
+            color: #ff0000;
+            text-shadow: 0 0 8px #b30000;
+            margin-bottom: 20px;
+        }
+
+        .event-quote {
+            font-style: italic;
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 4px solid #ff0000;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .event-desc {
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .event-details {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .event-details div {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.05);
+            padding: 8px 12px;
+            border-radius: 6px;
+        }
+
+        .event-rules {
+            background: rgba(255,255,255,0.05);
+            padding: 15px;
+            border-left: 4px solid #ff0000;
+            border-radius: 6px;
+        }
+
+        .event-rules ul {
+            padding-left: 20px;
+            margin: 0;
+        }
+
+        .event-rules li {
+            margin-bottom: 6px;
+        }
+
+        /* ===== RIGHT SECTION: FORM ===== */
+        .event-form {
+            flex: 0 0 auto;
+            /* ⬅ stop stretching */
+            align-self: flex-start;
+            /* ⬅ stay at top */
+            max-width: 400px;
+            border: 2px solid #ff0000;
+            padding: 30px;
+            border-radius: 12px;
+            background: rgba(255,0,0,0.03);
+            height: fit-content;
+            /* ⬅ end exactly after button */
+        }
+
+        .event-form h2 {
+            text-align: center;
+            color: #ff0000;
+            font-family: 'ITC Benguiat Std', serif;
+            text-shadow: 0 0 8px #b30000;
+            margin-bottom: 25px;
+        }
+
+        .event-form label {
+            display: block;
+            margin: 10px 0 5px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            color: #ff6666;
+        }
+
+        .event-form input, .event-form textarea {
+            width: 100%;
+            padding: 10px;
+            background: transparent;
+            border: 1px solid #ff0000;
+            border-radius: 6px;
+            color: #fff;
+        }
+
+        .event-form input:focus, .event-form textarea:focus {
+            outline: none;
+            border-color: #ff1a1a;
+            box-shadow: 0 0 6px #ff1a1a;
+        }
+
+        .event-form button {
+            margin-top: 20px;
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(90deg, #b30000, #ff1a1a);
+            border: none;
+            color: #fff;
+            text-transform: uppercase;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            letter-spacing: 1px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .event-form button:hover {
+            transform: scale(1.03);
+            box-shadow: 0 0 15px #ff1a1a, 0 0 25px #b30000 inset;
+        }
+
+        /* ===== BACK LINK ===== */
+        .back-link {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: inline-block;
+        }
+
+        .back-icon {
+            width: 42px;
+            /* adjust size if needed */
+            height: auto;
+            cursor: pointer;
+            transition: transform 0.25s ease, filter 0.25s ease;
+        }
+
+        .back-icon:hover {
+            transform: scale(1.1);
+            filter: drop-shadow(0 0 8px #ff0000);
+        }
+
+        /* ===== ASH ANIMATION CONTAINER ===== */
+        .ash-container {
+            position: fixed;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .ash {
+            position: absolute;
+            background: rgba(200,200,200,0.3);
+            width: 3px;
+            height: 10px;
+            border-radius: 50%;
+            animation: floatAsh linear infinite;
+        }
+
+        @keyframes floatAsh {
+            0% {
+                transform: translateY(0) translateX(0) rotate(0deg);
+                opacity: 0.2;
+            }
+            50% {
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateY(-800px) translateX(50px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a class="back-link" href="home.html" aria-label="Back">
+        <img src="back.png" alt="Back" class="back-icon">
+    </a>
+
+    <div class="container">
+        <div class="event-info">
+            <h1 class="event-title" id="event-title"></h1>
+            <div class="event-quote"></div>
+            <p class="event-desc"></p>
+            <div class="event-details"></div>
+            <div class="event-rules"><strong>Case Archive #Rules:</strong><ul></ul></div>
+        </div>
+
+        <div class="event-form">
+            <h2>Enlist for Mission</h2>
+            <form id="join-form">
+                <label>Agent:</label>
+                <input type="text" id="agent" placeholder="Name of Representative" required>
+                
+                <label>Student Name</label>
+                <input type="text" id="name" placeholder="Your Name" required>
+
+                <label>Student Email</label>
+                <input type="email" id="email" placeholder="Your Email" required>
+
+                <label>Phone Number</label>
+                <input type="tel" id="phone" placeholder="Phone Number" required>
+
+                <label>University/College</label>
+                <input type="text" id="college" placeholder="School Name" required>
+
+                <label>Insitution ID</label>
+                <input type="text" id="institutionId" readonly>
+
+                <button type="submit">Confirm Enlistment</button>
+            </form>
+            <p id="response-msg"></p>
+        </div>
+    </div>
+
+    <div class="ash-container" id="ash-container"></div>
+    <div class="cursor"></div>
+    <audio id="click-sound" preload="auto"><source src="click.mp3" type="audio/mpeg"></audio>
+
+    <script>
+        // ====== ELEMENT REFERENCES ======
+        const cursor = document.querySelector('.cursor');
+        const clickSound = document.getElementById('click-sound');
+        const joinForm = document.getElementById('join-form');
+        const responseMsg = document.getElementById('response-msg');
+        const ashContainer = document.getElementById('ash-container');
+
+        // ====== EVENTS DATA ======
+        const events = {
+            "Echoes in the WSQK": {
+                quote: '"Mushaira - Let your verses echo through the void."',
+                desc: "Step into a space where words feel otherworldly and emotions linger like echoes. This mushaira brings together voices drawn to depth, mystery, and the unseen.Urdu and Hindi poetry find a home here verses that feel intense, reflective, or quietly powerful, perfectly in tune with a world that exists just beyond the familiar",
+                time: "12:30 PM - 02:00 PM",
+                venue: "The Basement (Room 102)",
+                rules: [
+                    "Participation: Individual entry for registered participants only",
+                    "Limit: Each participant may present only one poem in the first round",
+                    "Originality: Strictly original poetry; plagiarized work results in immediate disqualification",
+                    "Language: Poetry may be in Hindi, Urdu, English, or Hinglish",
+                    "Versatility: All poetic forms allowed (Ghazal, Nazm, Free Verse, Shayari, Slam, etc.)",
+                    "Timing: Each participant has a 4-minute limit for recitation",
+                    "Flow: Performances follow a continuous, high-intensity Mushaira-style sequence",
+                    "Penalties: Exceeding the allotted time may lead to a deduction of marks",
+                    "Round 1 Criteria: Judged on depth, imagery, emotional impact, clarity, and stage presence",
+                    "Structure: Shortlisting for Round 2 occurs only if participant volume is high",
+                    "Level-Up Round: Shortlisted poets must incorporate a provided theme, line, or verse",
+                    "Round 2 Preparation: 20 minutes provided to integrate the theme into original work",
+                    "Round 2 Criteria: Judged on meaningful integration, literary maturity, and coherence",
+                    "Finality: Judges’ decisions are final and binding in all circumstances",
+                    "Authority: Organizing committee reserves the right to modify rules or structure",
+                    "Philosophy: Decorum must be maintained, celebrating poetry as reflection and responsibility"
+                ]
+            },
+            "The Upside Down Flip":{
+                quote: '"Master the flip: where logic shifts and stances shatter in the blink of an eye."',
+                desc: "A high-stakes debate challenge where the ground beneath your arguments shifts. Speakers must navigate sudden reversals of perspective at the moderator's whim, maintaining wit and logic while the 'world' flips from For to Against.",
+                time: "03:00 PM - 04:30 PM",
+                venue: "Room 204, Main Hall",
+                rules: [
+                    "Command Flow: Speakers begin by supporting the motion (For)",
+                    "Switching: On 'Block,' speakers must switch to against; on 'Tackle,' switch back to original 'For' position",
+                    "Frequency: The moderator can call switches any number of times during the speech",
+                    "Speaking Time: Participants are allowed 2 to 3 minutes of speaking time",
+                    "Preparation: 2 to 5 minutes provided for on-the-spot preparation",
+                    "Eligibility: Restricted to currently enrolled undergraduate or postgraduate students",
+                    "Anonymity: Participants are identified by Team Codes to ensure unbiased judging",
+                    "Conduct: Use of vulgarity, obscene language, or defamatory remarks results in immediate disqualification",
+                    "Spontaneity: Reading from manuscripts or using electronic gadgets during the speech is prohibited",
+                    "Finality: The judging panel's decision is final and binding with no appeals entertained",
+                    "Scoring - Agility: Judged on spontaneity and how creatively the speaker transitions after a command",
+                    "Scoring - Logic: Judged on the ability to construct valid arguments for both sides without repetition",
+                    "Scoring - Delivery: Judged on fluency, diction, confidence, and body language",
+                    "Scoring - Focus: Judged on staying relevant to the topic despite rapid stance changes"
+                ]
+            },
+            "Flayer and the Flayed": {
+                "quote": "\"Survive the mind-bending trials where your skills are dissected and your composure is flayed.\"",
+                "desc": "A multi-stage corporate-style gauntlet designed to test your mental fortitude and professional edge. From aptitude tests to high-pressure interviews, only those with a steel will and a sharp mind will emerge from the Hawkins Lab of professional competition.",
+                "time": "10:00 AM - 01:30 PM",
+                "venue": "The Testing Chamber (Seminar Hall 1)",
+                "rules": [
+                    "Participation: Entry is permitted only upon presentation of a mandatory college ID card",
+                    "Rounds: The event consists of 3–4 stages designed to filter participants",
+                    "Round 1: Initial screening via an Aptitude test or General Knowledge quiz",
+                    "Round 2: A 'on the spot' Group Discussion (GD) on a provided topic",
+                    "Round 3: A rigorous Personal Interview (PI) conducted by a professional panel",
+                    "Round 4 (Optional): A 'Stress Round' or Rapid Fire session for the top finalists",
+                    "Dress Code: Formal business attire (shirts, trousers, and formal shoes) is strictly required",
+                    "Punctuality: Mandatory reporting to the venue 15–30 minutes before the scheduled time",
+                    "Communication: The strict medium of communication for all rounds is English",
+                    "Gadgets: Use of mobile phones or any electronic devices is strictly prohibited",
+                    "Evaluation - Self-Introduction: Judged on the clarity and impact of the 'Tell me about yourself' pitch",
+                    "Evaluation - Body Language: Judged on professionalism in posture, eye contact, and gestures",
+                    "Evaluation - Content: Judged on the quality of answers, relevance of examples, and honesty",
+                    "Evaluation - Problem Solving: Judged on the ability to handle situational or 'stress' questions",
+                    "Evaluation - Etiquette: Judged on courteousness, listening skills, and asking relevant questions",
+                    "Disqualification - Inappropriate Behavior: Any form of misbehavior, foul language, or vulgarity",
+                    "Disqualification - Interference: Seeking support from the audience or other participants during active rounds",
+                    "Disqualification - Confidentiality: Completed participants cannot disclose interview questions to others",
+                    "Disqualification - Plagiarism: Providing false information on a resume or during the interview",
+                    "Requirement: Participants must bring their CV for the judging panel's review"
+                ]
+            },
+            "Sorcerer's Wisdom": {
+                "quote": "\"Navigate the twisting labyrinth of narrative, where every turn reveals a new device of your own making.\"",
+                "desc": "Step into the shadows of creativity where your survival depends on a single, randomly assigned narrative tool. In this high-pressure writing gauntlet, you must weave a tale that is both original and structurally sound before facing the panel to justify your literary choices.",
+                "time": "11:00 AM - 12:30 PM",
+                "venue": "The Creaking Library (Room 305)",
+                "rules": [
+                    "Participation: Open to all registered individuals; submission is strictly individual",
+                    "Entry Limit: Each participant is permitted to submit only one story entry",
+                    "Device Selection: Participants must randomly pick a narrative device from a chit or card",
+                    "Commitment: Once a narrative device is selected, it cannot be changed under any circumstances",
+                    "Writing Time: A strict 40-minute limit is provided to draft the original story on-site",
+                    "Prohibitions: Use of pre-written material, electronic devices, or external references is forbidden",
+                    "Word Limit: The story must maintain a length between 500 and 650 words",
+                    "Penalty: Failure to adhere to the word limit may result in point deductions or disqualification",
+                    "Narration: Each participant has 10 minutes to narrate their story to the judges",
+                    "Explanation: A dedicated 2 minutes is provided to explain the use of the assigned device",
+                    "Time Management: Exceeding the narration or explanation limits may lead to a deduction of marks",
+                    "Content: Stories may span any genre but must be free of plagiarism and offensive material",
+                    "Criteria - Device Usage: Judged on the effective and clear integration of the assigned narrative tool",
+                    "Criteria - Creative Merit: Judged on originality, clarity, structure, and linguistic proficiency",
+                    "Criteria - Adherence: Judged on strict compliance with time and word-count regulations",
+                    "Disqualification: Resulting from plagiarism, violation of rules, or failure to use the assigned device",
+                    "Finality: The judges’ decision is final and binding for all participants",
+                    "Authority: The organizing committee reserves the right to modify rules as required"
+                ]
+            },
+            "Brennor's Bunker": {
+                "quote": "\"Enter the hidden depths where the strange becomes reality and only the quick-witted survive.\"",
+                "desc": "A high-intensity, reality-bending speaking challenge located in the deepest reaches of the Lab. Participants must generate their own 'strange' anomalies, swap them with others, and survive a 15-minute mental lockdown to justify the impossible before the judging panel.",
+                "time": "03:00 PM - 04:30 PM",
+                "venue": "The Secure Vault (Room 101)",
+                "rules": [
+                    "Participation: Limited to one participant per college plus OTSE members (1+1)",
+                    "Essentials: Participants must carry their own pen and paper for the duration of the event",
+                    "Topic Generation: Upon entry, participants have 1 minute to write a 'strange' topic on a blank sheet",
+                    "The Swap: Topics are collected and redistributed randomly; once assigned, no changes are allowed",
+                    "Preparation: A 15-minute lockdown period is provided to develop thoughts on the assigned topic",
+                    "Speaking Time: Participants must deliver a 2-minute speech on their assigned 'What If' scenario",
+                    "Sheet Submission: Prepared notes are collected immediately after the 15-minute preparation time ends",
+                    "Sequence: Participants are called to the stage by the judge on a random basis",
+                    "Language: Speakers may choose to present in English, Hindi, or Bengali",
+                    "Penalties: Exceeding the 2-minute speaking limit will result in a deduction of points",
+                    "Plagiarism: Any use of non-original content will lead to instant disqualification",
+                    "Gadget Ban: Use of mobile phones is strictly prohibited and results in immediate disqualification",
+                    "Criteria - Justification: Judged on the ability to creatively and logically justify the unconventional topic",
+                    "Criteria - Consistency: Judged on how closely the spoken content aligns with the submitted preparation sheet",
+                    "Criteria - Delivery: Judged on fluency, attitude, and presence of mind under pressure",
+                    "Finality: The judges' decision is final and binding in all matters"
+                ]
+            },
+            "Dear Billy...":{
+                "quote": "\"A message from the past, sent through the static to change the future.\"",
+                "desc": "A trans-dimensional speech-writing challenge where history meets the present. Participants assume the mantle of iconic historical leaders, channeling their unique ideologies and voices to address a demanding prompt revealed only at the moment of reckoning. It is a test of research, creative empathy, and the power of the spoken word to pierce through time.",
+                "time": "11:30 AM - 01:00 PM",
+                "venue": "The War Room (Room 202)",
+                "rules": [
+                    "Format: The event is conducted strictly offline in a live setting",
+                    "Preparation: Historical characters are assigned to participants 3 days prior to the event",
+                    "Disclosure: The specific speech topic is revealed only at the start of the event",
+                    "Writing Time: Participants are allotted a strict 20-minute window to draft their original manuscript",
+                    "Speaking Time: Each participant has 5 minutes to deliver their speech with the presence of their assigned figure",
+                    "Participation: Limited to one participant per college plus one OTSE member",
+                    "Integrity: Any use of AI or evidence of plagiarism results in immediate elimination",
+                    "Scoring - Impact: Judged on the persuasive power and depth of the written message",
+                    "Scoring - Delivery: Judged on the speaker's ability to embody the style and confidence of the leader",
+                    "Finality: The judges' results are final and binding"
+                ]
+            },
+            "Creel Confessionals": {
+                "quote": "\"Strip the voice, reclaim the narrative, and let your echoes redefine the scene.\"",
+                "desc": "A trans-dimensional performance platform where familiar visuals are reimagined through new voices. Teams are thrust into a muted reality from a popular film and must provide a live, original dub based on a specific theme. It is a test of synchronization, creative reimagining, and the power to maintain a scene's soul while changing its every word.",
+                "time": "04:30 PM - 06:00 PM",
+                "venue": "The Projection Room (Main Auditorium)",
+                "rules": [
+                    "Participation: Open to registered participants in teams of 2 to 4 members only",
+                    "Presence: Every team member must be present on stage during the performance",
+                    "OTSE: On-the-spot registration is permitted via the OTSE team before the event starts",
+                    "Preparation: A movie scene and a specific theme are provided 24 hours in advance",
+                    "Live Dubbing: Teams must dub the muted scene live on stage with original dialogues",
+                    "Thematic Alignment: Dialogues must be entirely new and based strictly on the allotted theme",
+                    "Duration: Each team must perform a minimum of 3 minutes of the provided scene",
+                    "Materials: Written scripts or printed dialogue sheets are allowed during the performance",
+                    "Gadget Ban: Use of mobile phones or electronic gadgets on stage is strictly prohibited",
+                    "Authenticity: Pre-recorded audio, voiceovers, or imitation of existing parodies result in disqualification",
+                    "Language: Performance may be conducted in Bengali, Hindi, or English",
+                    "Content Standards: Use of offensive, political, religious, or discriminatory content is strictly forbidden",
+                    "Criteria - Narrative: Judged on creativity, originality of dialogues, and delivery timing",
+                    "Criteria - Performance: Judged on voice modulation, synchronization, acting, and coordination",
+                    "Criteria - Engagement: Judged on overall impact and audience engagement",
+                    "Conduct: Teams must maintain discipline; any misconduct leads to immediate disqualification",
+                    "Finality: All decisions made by the judges are final and binding",
+                    "Authority: The organizing committee reserves the right to modify rules if necessary"
+                ]
+            },
+            "Hawkins Headlines": {
+                quote: '"Piece together the truth from the static: where every word is a puzzle and every frame a mystery."',
+                desc: "A trans-dimensional creative writing gauntlet where visual interpretation meets extreme structural constraints. Participants must weave a cohesive narrative from a single mysterious frame while battling a pool of 'Opponent Words'—random terms thrown into the mix by fellow writers. In the Lab, your only weapon is your adaptability to the shifting linguistic landscape.",
+                time: "01:00 PM - 02:30 PM",
+                venue: "The Newsroom (Room 302)",
+                rules: [
+                    "Participation: Individual entry for all registered participants; only one submission per person is permitted",
+                    "Visual Prompt: A single visual frame serves as the primary, open-interpretation inspiration for the writing",
+                    "Opponent Word Contribution: Participants have 15 minutes to submit 30 diverse words to a collective pool",
+                    "Opponent Word Challenge: Each writer receives 30 random words from the pool that must be used meaningfully",
+                    "Word Pool Distinction: Organiser-given mandatory/omitted words will not be included in the opponent word pool to prevent overlap",
+                    "Exact Usage: Assigned mandatory and opponent words must be used exactly as provided, without any grammatical modifications (no tense or plural changes)",
+                    "Organiser’s Twist - Mandatory: One specific mandatory word will be announced and must be clearly included",
+                    "Organiser’s Twist - Omitted: One omitted word will be announced and must not appear anywhere in the submission",
+                    "Penalty: Usage of the omitted word may lead to immediate penalty or disqualification",
+                    "Writing Time: A strict 45-minute limit is provided to complete the work on-site",
+                    "Start Point: The 45-minute writing clock begins only after all prompts, twists, and opponent words have been fully announced",
+                    "Prohibitions: Use of electronic devices, pre-written material, or external assistance is strictly forbidden",
+                    "Word Limit: Submissions must maintain a length between 500 and 650 words",
+                    "Format: Flexible writing forms are allowed, including journal entries, letters, and narrative prose",
+                    "Poetry Restriction: Narrative prose with lyrical elements is permitted, but pure poetry or verse-only submissions are strictly prohibited",
+                    "Originality: All content must be original, free from plagiarism, and appropriate in nature",
+                    "Judging — Creativity: Evaluated on the originality of interpretation, inventive narrative approach, and engagement with the visual prompt",
+                    "Judging — Constraint Execution: Evaluated on the meaningful integration of opponent words, correct usage of the mandatory word, and strict adherence to the omitted-word constraint",
+                    "Judging — Structure: Evaluated on narrative coherence, flow, pacing, and overall structural strength",
+                    "Judging — Impact: Evaluated on emotional resonance, linguistic proficiency, stylistic control, and the lasting impression of the narrative"
+                ]
+            },
+            "Hopper's Letter": {
+                "quote": "\"A heart-to-heart written from the cabin, where every word carries the weight of a world worth saving.\"",
+                "desc": "A high-stakes content creation challenge that tests your ability to channel voices from the void. Participants must craft engaging, professional-grade narratives—ranging from Dustin’s secret blogs to tactical marketing for the Starcourt Mall—tailored specifically to a secret target audience. It is a race against time to turn raw thoughts into impactful, handwritten survival guides.",
+                "time": "03:00 PM - 04:30 PM",
+                "venue": "The Cabin (Room 104)",
+                "rules": [
+                    "Participation: Open to all registered individuals; participation is strictly individual",
+                    "Submission Limit: Each participant is permitted to submit only one handwritten entry",
+                    "Originality: Content must be entirely original; any form of plagiarism leads to disqualification",
+                    "Word Limit: Submissions must maintain a length between 500 and 800 words",
+                    "Language: The primary language is English, though quotations in other languages are permitted",
+                    "Format: Content must be handwritten on A4 sheets provided during the event",
+                    "Competition Format: Topics are provided on the spot with a 60–75 minute writing window",
+                    "Tech Ban: Internet use is strictly forbidden and results in instant disqualification",
+                    "Versatility: Writing formats vary by topic, including blogs, email campaigns, product descriptions, or scripts",
+                    "Thematic Scope: Topics may include character POVs (e.g., Dustin's blog), marketing, or vlog scripts",
+                    "Target Audience: Content must be specifically adapted to a mentioned target audience",
+                    "Criteria - Relevance: Judged on how effectively the content aligns with the given topic and audience",
+                    "Criteria - Quality: Judged on creativity, structure, organization, and clarity of ideas",
+                    "Criteria - Mechanics: Judged on grammar, vocabulary, and the overall impact of the writing"
+                ]
+            },
+            "ClockTurn": {
+                "quote": "\"The hands move, the story shifts, and the reality you knew begins to unravel.\"",
+                "desc": "A high-stakes narrative distortion challenge where participants must dismantle a familiar tale and rebuild it into something unrecognizable. Writers are tasked with reversing character moralities and forcing an organic genre shift—from the mundane to the macabre—all while being driven toward a mandatory final sentence. It is a race against time to prove that even the most innocent stories have a dark side.",
+                "time": "10:00 AM - 11:30 AM",
+                "venue": "The Grandfather Clock (Room 205)",
+                "rules": [
+                    "Participation: Individual entry for all registered participants; only one submission per person is allowed",
+                    "Base Tale Allocation: Participants are provided a pre-decided fairy tale, myth, or folklore at the start of the event",
+                    "Recognizability: The original tale must remain clearly identifiable through its characters, plot, or premise",
+                    "Writing Time: A strict 45-minute limit is provided to complete the story on-site without external aids",
+                    "Character Reversal: Participants must implicitly reverse the moral roles of at least two key characters",
+                    "Mandatory Final Line: The story must conclude exactly with a specific sentence provided by the committee",
+                    "Ending Integration: The narrative must lead naturally to the mandatory conclusion; forced endings may be penalized",
+                    "Genre Shift: The story must begin in one genre (e.g., romance) and organically transition into a contrasting one (e.g., horror)",
+                    "Implicit Transition: The shift between genres must be subtle and narrative-driven rather than explicitly announced",
+                    "Object-Centric Twist: An ordinary assigned object must be used symbolically to alter the story's direction",
+                    "Object Constraint: The object's influence must be implied and cannot be described as magical or supernatural",
+                    "Word Limit: Submissions must maintain a length between 600 and 750 words",
+                    "Content Standards: Stories must be original and free from offensive, discriminatory, or plagiarized material",
+                    "Judging - Creativity: Evaluated on the originality of the reinterpretation and execution of character reversals",
+                    "Judging - Structure: Evaluated on the seamlessness of the genre transition and the symbolic use of the assigned object",
+                    "Judging - Impact: Evaluated on narrative coherence, emotional impact, and linguistic proficiency"
+                ]
+            },
+            "Ericas Chatterbox": {
+                "quote": "\"The radio is screaming, but can you find the words to break through the interference?\"",
+                "desc": "A high-speed spontaneous speaking challenge set in the heart of the Lab's communication hub. Participants must draw a random frequency (topic) and immediately transmit their thoughts before the signal fades. It is a test of composure, mental agility, and the ability to maintain perfect 'radio silence' while under the clock.",
+                "time": "02:00 PM - 03:30 PM",
+                "venue": "The Radio Tower (Room 201)",
+                "rules": [
+                    "Selection: Topics are written on slips of paper and drawn individually immediately before speaking.",
+                    "Thinking Time: Each participant is granted 1 minute of preparation time once the topic is drawn.",
+                    "Speaking Time: Participants have a maximum of 2 minutes to deliver their speech.",
+                    "Signal Warning: A warning bang will sound at the 1 minute 30 second mark.",
+                    "Language: The event is conducted strictly in English Only.",
+                    "Resource Ban: Accessing the internet or any external resources after choosing a topic is strictly prohibited.",
+                    "Conduct: Participants must maintain proper decorum and exercise wise word choice throughout their performance.",
+                    "Originality: No form of plagiarism will be entertained; content must be spontaneous and original.",
+                    "Authority: The decision of the event organizers remains final and binding."
+                ]
+            },
+            "Battle of Starcourt Hall": {
+                "quote": "\"The signal is clear: two sides, one truth, and a battle for the soul of Hawkins.\"",
+                "desc": "A high-stakes Oxford Style debate tournament held in the heart of the Starcourt Mall. Teams of two must split their loyalties, with one member defending the motion and the other dismantling it. In this trilingual arena, success depends on formal persuasion, structured logic, and the ability to survive the heat of the 'Rebuttal' fire.",
+                "time": "10:00 AM - 01:00 PM",
+                "venue": "Starcourt Plaza (Main Hall)",
+                "rules": [
+                    "Style: The tournament follows a formal Oxford Style format.",
+                    "Composition: Participants compete in teams of two; individual registrants will be paired by organizers.",
+                    "Stance: Within each team, one member speaks FOR the motion and the other speaks AGAINST.",
+                    "Speaking Time: Each participant is allotted 3 minutes for their main constructive speech.",
+                    "Grace Period: A 12-second grace period (T+12) is allowed to conclude arguments.",
+                    "Rebuttals: Each participant has 1 minute to respond to opposing questions from the house.",
+                    "Conduct: Inflammatory language or derogatory remarks regarding identity result in point deduction or disqualification.",
+                    "Floor Etiquette: Interrupting a speaker during protected time or during a rebuttal response is strictly prohibited.",
+                    "Penalties: Two verbal warnings are given for etiquette violations; a third results in immediate disqualification.",
+                    "Technology: Laptops and phones are allowed for live research but CANNOT be used for timing or reading notes.",
+                    "Performance: Reading full speeches verbatim rather than engaging in active debate may lower 'Style' points.",
+                    "Motion Release: The official debate motion is released exactly 24 hours prior to the event.",
+                    "Language: This is a trilingual debate; language preferences must be fixed during registration and cannot be changed.",
+                    "Scheduling: Requests to move speaking slots must be made at least 3 hours prior to the event start.",
+                    "Finality: All decisions are at the sole discretion of the Judge and Chair with no appeals considered.",
+                    "Authority: Organizers reserve the right to modify rules, matchups, or team compositions as they see fit."
+                ]
+            }
+        }
+
+        // ====== DYNAMIC EVENT INFO ======
+        const params = new URLSearchParams(window.location.search);
+        const eventName = params.get('event') || 'Echoes in the WSQK';
+        const eventData = events[eventName] || events["Echoes in the WSQK"];
+
+        // Auto-generate Institution ID
+        document.getElementById('event-title').textContent = eventName;
+        document.querySelector('.event-quote').textContent = eventData.quote;
+        document.querySelector('.event-desc').textContent = eventData.desc;
+        document.querySelector('.event-details').innerHTML = `
+            <div><span>⏰</span> ${eventData.time}</div>
+            <div><span>📍</span> ${eventData.venue}</div>
+        `;
+
+        const rulesList = document.querySelector('.event-rules ul');
+        rulesList.innerHTML = '';
+        eventData.rules.forEach(rule => {
+            const li = document.createElement('li');
+            li.textContent = rule;
+            rulesList.appendChild(li);
+        });
+
+        // ====== CUSTOM CURSOR ======
+        if (cursor) {
+            document.addEventListener('mousemove', e => {
+                cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
+            });
+            document.addEventListener('mousedown', () => cursor.classList.add('click'));
+            document.addEventListener('mouseup', () => cursor.classList.remove('click'));
+        }
+
+        // ====== CLICK SOUND ======
+        if (clickSound) {
+            clickSound.volume = 0.6;
+            let audioUnlocked = false;
+            document.addEventListener('mousedown', () => {
+                if (!audioUnlocked) {
+                    clickSound.play().catch(()=>{});
+                    audioUnlocked = true;
+                } else {
+                    clickSound.currentTime = 0;
+                    clickSound.play().catch(()=>{});
+                }
+            });
+        }
+
+        // ====== ASH ANIMATION ======
+        const totalAsh = 80;
+        for (let i=0;i<totalAsh;i++){
+            const ash = document.createElement('div');
+            ash.classList.add('ash');
+            ash.style.left = Math.random()*window.innerWidth + 'px';
+            ash.style.top = Math.random()*window.innerHeight + 'px';
+            ash.style.animationDuration = 5 + Math.random()*10 + 's';
+            ash.style.width = 2 + Math.random()*3 + 'px';
+            ash.style.height = 6 + Math.random()*10 + 'px';
+            ashContainer.appendChild(ash);
+        }
+
+        // ====== FORM SUBMISSION ======
+        joinForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const payload = {
+                agent: document.getElementById('agent').value,
+                eventName: eventName,
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                institutionId: document.getElementById('institutionId').value,
+                college: document.getElementById('college').value,
+            };
+
+            try {
+                const res = await fetch('http://localhost:5000/register', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                const data = await res.json();
+                if (!res.ok) throw new Error(data.error || "Submission failed");
+
+                // ✅ Browser prompt
+                alert("✅ Successful enlistment! Your registration has been recorded.");
+                // ✅ Reset form
+                joinForm.reset();
+                // Optional: clear status text
+                responseMsg.textContent = '';
+
+            } catch (err) {
+                console.error('Failed to join event:', err);
+                responseMsg.textContent = 'Failed: ' + (err.message || err);
+                responseMsg.style.color = '#ff3333';
+            }
+        });
+
+        const collegeInput = document.getElementById("college");
+        const institutionIdInput = document.getElementById("institutionId");
+
+        // Generate ID if new institution
+        function generateInstitutionID() {
+    return "ID-" + Math.random().toString(36).substring(2, 5).toUpperCase();
+}
+        
+
+        let timer;
+        collegeInput.addEventListener("input", () => {
+            clearTimeout(timer);
+            timer = setTimeout(async () => {
+                const college = collegeInput.value.trim();
+                if (!college) return;
+
+                try {
+                    const res = await fetch(
+                        `http://localhost:5000/check-institution?college=${encodeURIComponent(college)}`
+                    );
+                    const data = await res.json();
+
+                    if (data.exists) {
+                        institutionIdInput.value = data.institutionId;
+                    } else {
+                        institutionIdInput.value = generateInstitutionID();
+                    }
+                } catch (err) {
+                    console.error("Error checking institution");
+                }
+            }, 500);
+        });
+    </script>
+</body>
+</html>
