@@ -44,6 +44,45 @@
     </audio>
 
     <!-- SCRIPT MUST BE LAST -->
+     <script>document.addEventListener("DOMContentLoaded", () => {
+    const enterBtn = document.getElementById("enter-btn");
+    const entranceScreen = document.getElementById("entrance-screen");
+    const videoContainer = document.getElementById("video-container");
+    const introVideo = document.getElementById("intro-video");
+    const muteBtn = document.getElementById("mute-btn");
+    const skipBtn = document.getElementById("skip-btn");
+    const clickSound = document.getElementById("click-sound");
+
+    // Swap video for mobile
+    const isMobile = window.innerWidth <= 768; // adjust breakpoint as needed
+    if (isMobile) {
+        introVideo.src = "intromob.mp4";
+    } else {
+        introVideo.src = "intro.mp4";
+    }
+
+    enterBtn.addEventListener("click", () => {
+        clickSound.play();
+        entranceScreen.classList.add("hidden");
+        videoContainer.classList.remove("hidden");
+        introVideo.play();
+    });
+
+    // Mute / Unmute toggle
+    muteBtn.addEventListener("click", () => {
+        introVideo.muted = !introVideo.muted;
+        muteBtn.querySelector(".unmuted").classList.toggle("hidden");
+        muteBtn.querySelector(".muted-icon").classList.toggle("hidden");
+    });
+
+    // Skip button
+    skipBtn.addEventListener("click", () => {
+        introVideo.pause();
+        videoContainer.classList.add("hidden");
+        // Here you can show the main content
+    });
+});
+</script>
     <script src="script.js"></script>
 </body>
 </html>
