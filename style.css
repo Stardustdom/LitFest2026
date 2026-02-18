@@ -383,6 +383,12 @@ body {
 
     z-index: 0; /* VERY IMPORTANT */
 }
+@media (max-width: 768px) {
+    .hero-bg {
+        background: url("bgmob.jpeg") no-repeat center center / cover;
+        filter: brightness(70%) contrast(100%) blur(0.9px);
+    }
+}
 
 /* ================================
    HERO SECTION
@@ -407,11 +413,20 @@ body {
 ================================ */
 .obscura-title {
     font-family: 'ITC Benguiat Std', serif;
-    font-size: clamp(4rem, 10vw, 8rem);
-    letter-spacing: 0.2em;
+    font-size: clamp(3rem, 8vw, 8rem); /* scales smoothly */
+    letter-spacing: 0.15em;
     text-transform: uppercase;
     user-select: none;
+    line-height: 1.1;
+    margin: 0 10px; /* prevent overflow on small screens */
 }
+
+.tagline {
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    margin-top: 12px;
+    letter-spacing: 3px;
+}
+
 
 /* MAIN TEXT */
 .obscura-title span {
@@ -608,6 +623,42 @@ body {
     transform: scale(1.05);
     box-shadow: 0 0 15px #ff1a1a;
 }
+
+#countdown-boxed {
+    display: flex;
+    justify-content: center; /* center all boxes */
+    flex-wrap: nowrap;       /* prevent wrapping */
+    gap: 12px;               /* space between boxes */
+    margin-top: 30px;
+    overflow: hidden;        /* hide scroll bar */
+    padding: 0 10px;
+    z-index: 2;
+}
+
+.countdown-box {
+    flex: 0 0 auto;         /* prevent shrinking */
+    width: 80px;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    border: 2px solid #ff0000;
+    background: rgba(0,0,0,0.85);
+    box-shadow: 0 0 8px #b30000, 0 0 15px #800000 inset;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.countdown-box span {
+    font-size: clamp(1.2rem, 3vw, 2rem);
+}
+
+.countdown-box p {
+    font-size: clamp(0.6rem, 2vw, 0.9rem);
+    letter-spacing: 1px;
+}
+
 /* Boxed countdown timer */
 #countdown-boxed {
     display: flex;
@@ -682,13 +733,22 @@ body {
 /* ================================
    ENHANCED BOXED COUNTDOWN TIMER
 ================================ */
-#countdown-boxed {
+.countdown-box {
+    flex: 1 1 0;            /* allow boxes to shrink evenly */
+    min-width: 60px;        /* prevent boxes from becoming too small */
+    max-width: 100px;       /* optional cap */
+    height: 80px;
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
-    gap: 20px;
-    margin-top: 40px;
-    z-index: 2;
+    border-radius: 12px;
+    border: 2px solid #ff0000;
+    background: rgba(0,0,0,0.85);
+    box-shadow: 0 0 8px #b30000, 0 0 15px #800000 inset;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
 }
+
 
 .countdown-box {
     background: rgba(0, 0, 0, 0.85);
@@ -834,6 +894,17 @@ body {
         0 0 6px #ff0000,
         0 0 12px #b30000;
 }
+.events-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.event-card {
+    width: clamp(250px, 90%, 350px); /* scales nicely on mobile */
+}
+
 /* ===== LOGO CLUSTER ===== */
 #logo-cluster {
     position: fixed;
