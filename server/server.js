@@ -17,10 +17,11 @@ app.use(express.json());
 // Serve frontend files from project root
 app.use(express.static(path.join(__dirname, "..")));
 
-// Root route → index.html
+// Root route
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "..", "index.html"));
 });
+
 
 // =======================
 // MONGODB CONNECTION
