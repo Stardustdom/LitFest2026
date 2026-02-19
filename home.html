@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Home | OBSCURA</title>
@@ -8,179 +9,410 @@
 </head>
 
 <body class="scrollable">
-<div id="home-container">
-    <!-- TOP RIGHT LOGO CLUSTER -->
-<div id="logo-cluster"></div>
+    <div id="home-container">
+        <!-- TOP RIGHT LOGO CLUSTER -->
+        <div id="logo-cluster"></div>
 
-    <!-- STATIC BACKGROUND -->
-     <div id="ash-container"></div>
+        <!-- STATIC BACKGROUND -->
+        <div id="ash-container"></div>
 
-    <div class="hero-bg"></div>
+        <div class="hero-bg"></div>
 
-    <!-- HERO SECTION -->
-    <section class="hero-section">
-        <div class="hero-content">
-            <h1 class="obscura-title">
-                <span data-text="OBSCURA">OBSCURA</span>
-            </h1>
-            <p class="tagline">MCKV Institute of Engineering</p>
+        <!-- HERO SECTION -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1 class="obscura-title">
+                    <span data-text="OBSCURA">OBSCURA</span>
+                </h1>
+                <p class="tagline">MCKV Institute of Engineering</p>
 
-            <!-- COUNTDOWN BOXED TIMER -->
-            <div id="countdown-boxed">
-                <div class="countdown-box">
-                    <span id="days">00</span>
-                    <p>Days</p>
+                <!-- COUNTDOWN BOXED TIMER -->
+                <div id="countdown-boxed">
+                    <div class="countdown-box">
+                        <span id="days">00</span>
+                        <p>Days</p>
+                    </div>
+                    <div class="countdown-box">
+                        <span id="hours">00</span>
+                        <p>Hours</p>
+                    </div>
+                    <div class="countdown-box">
+                        <span id="minutes">00</span>
+                        <p>Minutes</p>
+                    </div>
+                    <div class="countdown-box">
+                        <span id="seconds">00</span>
+                        <p>Seconds</p>
+                    </div>
                 </div>
-                <div class="countdown-box">
-                    <span id="hours">00</span>
-                    <p>Hours</p>
+            </div>
+        </section>
+
+        <!-- EVENTS SECTION -->
+        <section class="events-section">
+            <div class="events-heading-wrapper">
+                <span class="line"></span>
+                <h2 class="events-heading">Upcoming Events</h2>
+                <span class="line"></span>
+            </div>
+
+            <div class="events-cards">
+
+                <!-- Event Cards -->
+                <div class="event-card">
+                    <img src="event1.png" alt="Hawkins Headlines" class="event-img">
+                    <h3 class="event-name">Hawkins Headlines</h3>
+                    <p class="event-desc">Creative writing (using images)</p>
+                    <button class="join-btn" data-event="Hawkins Headlines">Join the Party</button>
                 </div>
-                <div class="countdown-box">
-                    <span id="minutes">00</span>
-                    <p>Minutes</p>
+
+                <div class="event-card">
+                    <img src="event2.png" alt="The Crawls" class="event-img">
+                    <h3 class="event-name">The Crawls</h3>
+                    <p class="event-desc">Relay Story writing</p>
+                    <button class="join-btn" data-event="The Crawls">Join the Party</button>
                 </div>
-                <div class="countdown-box">
-                    <span id="seconds">00</span>
-                    <p>Seconds</p>
+
+                <div class="event-card">
+                    <img src="event3.png" alt="Hopper's Letter" class="event-img">
+                    <h3 class="event-name">Hopper's Letter</h3>
+                    <p class="event-desc">Content Writing</p>
+                    <button class="join-btn" data-event="Hopper's Letter">Join the Party</button>
+                </div>
+
+                <div class="event-card">
+                    <img src="event4.png" alt="Dear Billy..." class="event-img">
+                    <h3 class="event-name">Dear Billy...</h3>
+                    <p class="event-desc">Speech Writing</p>
+                    <button class="join-btn" data-event="Dear Billy...">Join the Party</button>
+                </div>
+
+                <div class="event-card">
+                    <img src="event5.jpeg" alt="Sorcerer's Wisdom" class="event-img">
+                    <h3 class="event-name">Sorcerer's Wisdom</h3>
+                    <p class="event-desc">Storytelling (using narrative devices)</p>
+                    <button class="join-btn" data-event="Sorcerer's Wisdom">Join the Party</button>
+                </div>
+
+                <div class="event-card">
+                    <img src="event6.jpeg" alt="Brennor's Bunker" class="event-img">
+                    <h3 class="event-name">Brennor's Bunker</h3>
+                    <p class="event-desc">What If</p>
+                    <button class="join-btn" data-event="Brennor's Bunker">Join the Party</button>
+                </div>
+
+                <div class="event-card">
+                    <img src="event7.png" alt="ClockTurn" class="event-img">
+                    <h3 class="event-name">ClockTurn</h3>
+                    <p class="event-desc">Twist of Tales</p>
+                    <button class="join-btn" data-event="ClockTurn">Join the Party</button>
+                </div>
+
+                <div class="event-card">
+                    <img src="event8.png" alt="Echoes in the WSQK" class="event-img">
+                    <h3 class="event-name">Echoes in the WSQK</h3>
+                    <p class="event-desc">Mushaira</p>
+                    <button class="join-btn" data-event="Echoes in the WSQK">Join the Party</button>
+                </div>
+
+                <div class="event-card">
+                    <img src="event9.png" alt="Ericas Chatterbox" class="event-img">
+                    <h3 class="event-name">Erica's Chatterbox</h3>
+                    <p class="event-desc">Extempore</p>
+                    <button class="join-btn" data-event="Ericas Chatterbox">Join the Party</button>
+                </div>
+
+                <div class="event-card">
+                    <img src="event10.png" alt="Hawkins Council" class="event-img">
+                    <h3 class="event-name">Hawkins Council</h3>
+                    <p class="event-desc">Youth Parliament</p>
+                    <button class="join-btn" data-event="Hawkins Council">Join the Party</button>
+                </div>
+
+                <div class="event-card">
+                    <img src="event11.png" alt="Battle of Starcourt Hall" class="event-img">
+                    <h3 class="event-name">Battle of Starcourt Hall</h3>
+                    <p class="event-desc">Debate</p>
+                    <button class="join-btn" data-event="Battle of Starcourt Hall">Join the Party</button>
+                </div>
+
+                <div class="event-card">
+                    <img src="event12.png" alt="The Upside Down Flip" class="event-img">
+                    <h3 class="event-name">The Upside Down Flip</h3>
+                    <p class="event-desc">Block and Tackle</p>
+                    <button class="join-btn" data-event="The Upside Down Flip">Join the Party</button>
+                </div>
+
+                <div class="event-card">
+                    <img src="event13.png" alt="Sixty Seconds to Eleven" class="event-img">
+                    <h3 class="event-name">Sixty Seconds to Eleven</h3>
+                    <p class="event-desc">JAM & Verteez</p>
+                    <button class="join-btn" data-event="Sixty Seconds to Eleven">Join the Party</button>
+                </div>
+
+                <div class="event-card">
+                    <img src="event14.png" alt="Flayer and the Flayed" class="event-img">
+                    <h3 class="event-name">Flayer and the Flayed</h3>
+                    <p class="event-desc">Personal Interview</p>
+                    <button class="join-btn" data-event="Flayer and the Flayed">Join the Party</button>
+                </div>
+
+                <div class="event-card">
+                    <img src="event15.png" alt="Creel Confessionals" class="event-img">
+                    <h3 class="event-name">Creel Confessionals</h3>
+                    <p class="event-desc">Dub it Out</p>
+                    <button class="join-btn" data-event="Creel Confessionals">Join the Party</button>
+                </div>
+
+                <div class="event-card">
+                    <img src="event16.png" alt="Vecna’s Trial" class="event-img">
+                    <h3 class="event-name">Vecna’s Trial</h3>
+                    <p class="event-desc">Courtroom Drama</p>
+                    <button class="join-btn" data-event="Vecna’s Trial">Join the Party</button>
+                </div>
+
+
+            </div>
+        </section>
+
+
+        <!-- FOOTER SECTION -->
+        <footer class="footer-section">
+            <div class="footer-container">
+                <!-- Brand Column -->
+                <div class="footer-column brand-col">
+                    <div class="footer-logo-container">
+                        <img src="logo/Risers Logo - For Dark Background.png" alt="OBSCURA Logo" class="footer-logo">
+                    </div>
+                    <p class="footer-description">
+                        The annual literature festival of MCKV Institute of Engineering.
+                        Join us for a journey of innovation, creativity, and linguistic excellence.
+                        Step into the upside down of literature.
+                    </p>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="footer-column links-col">
+                    <div class="footer-header-wrapper">
+                        <h3 class="footer-header">Quick Links</h3>
+                        <span class="footer-line"></span>
+                    </div>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Events</a></li>
+                        <li><a href="#">Schedule</a></li>
+                        <li><a href="#">Our Team</a></li>
+                        <li><a href="#">Sponsors</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Recognitions -->
+                <div class="footer-column affiliations-col">
+                    <div class="footer-header-wrapper">
+                        <h3 class="footer-header">Recognitions & Affiliations</h3>
+                        <span class="footer-line"></span>
+                    </div>
+                    <div class="affiliation-grid">
+                        <div class="aff-icon"><img src="logo/3 Logos Combined.png" alt="Affiliation 1"></div>
+                        <div class="aff-icon"><img src="logo/3 Logos Combined.png" alt="Affiliation 2"></div>
+                        <div class="aff-icon"><img src="logo/3 Logos Combined.png" alt="Affiliation 3"></div>
+                        <div class="aff-icon"><img src="logo/3 Logos Combined.png" alt="Affiliation 4"></div>
+                        <div class="aff-icon"><img src="logo/3 Logos Combined.png" alt="Affiliation 5"></div>
+                        <div class="aff-icon"><img src="logo/3 Logos Combined.png" alt="Affiliation 6"></div>
+                    </div>
+                </div>
+
+                <!-- Venue -->
+                <div class="footer-column venue-col">
+                    <div class="footer-header-wrapper">
+                        <h3 class="footer-header">Venue</h3>
+                        <span class="footer-line"></span>
+                    </div>
+                    <div class="venue-info">
+                        <p>MCKV Institute of Engineering</p>
+                        <p>243 G.T. Road (N), Liluah</p>
+                        <p>Howrah - 711204, WB</p>
+                    </div>
+                    <div class="footer-socials">
+                        <a href="#" class="social-icon">
+                            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 1 1-7.6-11.7.5.5 0 0 1 .5.5 8.38 8.38 0 0 1-.9 3.8">
+                                </path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <button class="organizer-btn" id="open-organizers">Contact Organizer</button>
+            </div>
+        </footer>
+
+        <!-- ORGANIZERS MODAL -->
+        <div id="organizers-modal" class="modal-overlay">
+            <div class="modal-content">
+                <button class="close-modal">&times;</button>
+                <h2 class="modal-title">Student Organizing Committee</h2>
+                <div class="modal-line"></div>
+
+                <!-- TOP LEADS -->
+                <div class="leads-container">
+                    <div class="organizer-card lead">
+                        <div class="member-img-container">
+                            <img src="logo/Motto.png" alt="Lead 1" class="member-img placeholder">
+                        </div>
+                        <div class="member-info">
+                            <h3 class="member-name">Lead 1</h3>
+                            <p class="member-role">Convenor</p>
+                            <p class="member-phone">+91 0000000000</p>
+                        </div>
+                    </div>
+
+                    <div class="organizer-card lead">
+                        <div class="member-img-container">
+                            <img src="ORGANIZERS IMAGES/IMG-20251119-WA0038(1) - Kevin Domingo.jpg" alt="Kevin Domingo"
+                                class="member-img">
+                        </div>
+                        <div class="member-info">
+                            <h3 class="member-name">Kevin Domingo</h3>
+                            <p class="member-role">Co-Convenor</p>
+                            <p class="member-phone">+91 0000000000</p>
+                        </div>
+                    </div>
+
+                    <div class="organizer-card lead">
+                        <div class="member-img-container">
+                            <img src="ORGANIZERS IMAGES/PRANJAL.jpeg" alt="PRANJAL" class="member-img">
+                        </div>
+                        <div class="member-info">
+                            <h3 class="member-name">Pranjal</h3>
+                            <p class="member-role">Co-Convenor</p>
+                            <p class="member-phone">+91 0000000000</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- REST OF THE COMMITTEE (IMAGES ONLY) -->
+                <div class="committee-grid">
+                    <div class="organizer-card image-only">
+                        <div class="member-img-container small grid-size">
+                            <img src="ORGANIZERS IMAGES/1000470343 - Swapnaneel Chakrabarty.png" alt="Member"
+                                class="member-img">
+                        </div>
+                    </div>
+                    <div class="organizer-card image-only">
+                        <div class="member-img-container small grid-size">
+                            <img src="ORGANIZERS IMAGES/1765293973316 - Nandini Dubey.jpg" alt="Member"
+                                class="member-img">
+                        </div>
+                    </div>
+                    <div class="organizer-card image-only">
+                        <div class="member-img-container small grid-size">
+                            <img src="ORGANIZERS IMAGES/20251226_000408_334 - Atmadeep Samadder.jpg" alt="Member"
+                                class="member-img">
+                        </div>
+                    </div>
+                    <div class="organizer-card image-only">
+                        <div class="member-img-container small grid-size">
+                            <img src="ORGANIZERS IMAGES/AAKANKSHA TRIPATHI_PR_2ND - CSE _ 24 _ 128 - Aakanksha Tripathi(1).jpg"
+                                alt="Member" class="member-img">
+                        </div>
+                    </div>
+                    <div class="organizer-card image-only">
+                        <div class="member-img-container small grid-size">
+                            <img src="ORGANIZERS IMAGES/AAKANKSHA TRIPATHI_PR_2ND - CSE _ 24 _ 128 - Aakanksha Tripathi.jpg"
+                                alt="Member" class="member-img">
+                        </div>
+                    </div>
+                    <div class="organizer-card image-only">
+                        <div class="member-img-container small grid-size">
+                            <img src="ORGANIZERS IMAGES/CF2A26D8-6C8A-4ED0-8FFD-71FFC0CF7202 - Dwaipayan Chanda.png"
+                                alt="Member" class="member-img">
+                        </div>
+                    </div>
+                    <div class="organizer-card image-only">
+                        <div class="member-img-container small grid-size">
+                            <img src="ORGANIZERS IMAGES/IMG_20250121_095153 - Agniv De.jpg" alt="Member"
+                                class="member-img">
+                        </div>
+                    </div>
+                    <div class="organizer-card image-only">
+                        <div class="member-img-container small grid-size">
+                            <img src="ORGANIZERS IMAGES/IMG_20251109_152651 - RIBHU BASU.jpg" alt="Member"
+                                class="member-img">
+                        </div>
+                    </div>
+                    <div class="organizer-card image-only">
+                        <div class="member-img-container small grid-size">
+                            <img src="ORGANIZERS IMAGES/IMG_20260131_215124 - Sajani Choudhury.jpg" alt="Member"
+                                class="member-img">
+                        </div>
+                    </div>
+                    <div class="organizer-card image-only">
+                        <div class="member-img-container small grid-size">
+                            <img src="ORGANIZERS IMAGES/IMG_20260206_211150 - Souvik Ghosh.png" alt="Member"
+                                class="member-img">
+                        </div>
+                    </div>
+                    <div class="organizer-card image-only">
+                        <div class="member-img-container small grid-size">
+                            <img src="ORGANIZERS IMAGES/IMG_5329 - Sushmita Kumari Mahato.jpeg" alt="Member"
+                                class="member-img">
+                        </div>
+                    </div>
+                    <div class="organizer-card image-only">
+                        <div class="member-img-container small grid-size">
+                            <img src="ORGANIZERS IMAGES/InShot_20251017_220257020 - CSE_092_Meghna Bakuli.jpg"
+                                alt="Member" class="member-img">
+                        </div>
+                    </div>
+                    <div class="organizer-card image-only">
+                        <div class="member-img-container small grid-size">
+                            <img src="ORGANIZERS IMAGES/PSX_20240510_182544 - CSE_2_079_Sayak Mukherjee.jpg"
+                                alt="Member" class="member-img">
+                        </div>
+                    </div>
+                    <div class="organizer-card image-only">
+                        <div class="member-img-container small grid-size">
+                            <img src="ORGANIZERS IMAGES/Sayan photo - Sayan Roy.jpg" alt="Member" class="member-img">
+                        </div>
+                    </div>
+                    <div class="organizer-card image-only">
+                        <div class="member-img-container small grid-size">
+                            <img src="ORGANIZERS IMAGES/Screenshot_20260109-203807~2 - Priya Pandey.png" alt="Member"
+                                class="member-img">
+                        </div>
+                    </div>
+                    <div class="organizer-card image-only">
+                        <div class="member-img-container small grid-size">
+                            <img src="ORGANIZERS IMAGES/picture - SRIJANEE MANNA.jpeg" alt="Member" class="member-img">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- EVENTS SECTION -->
-    <section class="events-section">
-        <div class="events-heading-wrapper">
-    <span class="line"></span>
-    <h2 class="events-heading">Upcoming Events</h2>
-    <span class="line"></span>
-</div>
+        <!-- CUSTOM CURSOR -->
+        <div class="cursor"></div>
+        <audio id="click-sound" preload="auto">
+            <source src="click.mp3" type="audio/mpeg">
+        </audio>
+    </div>
 
-        <div class="events-cards">
-
-            <!-- Event Cards -->
-            <div class="event-card">
-    <img src="event1.png" alt="Hawkins Headlines" class="event-img">
-    <h3 class="event-name">Hawkins Headlines</h3>
-    <p class="event-desc">Creative writing (using images)</p>
-    <button class="join-btn" data-event="Hawkins Headlines">Join the Party</button>
-</div>
-
-<div class="event-card">
-    <img src="event2.png" alt="The Crawls" class="event-img">
-    <h3 class="event-name">The Crawls</h3>
-    <p class="event-desc">Relay Story writing</p>
-    <button class="join-btn" data-event="The Crawls">Join the Party</button>
-</div>
-
-<div class="event-card">
-    <img src="event3.png" alt="Hopper's Letter" class="event-img">
-    <h3 class="event-name">Hopper's Letter</h3>
-    <p class="event-desc">Content Writing</p>
-    <button class="join-btn" data-event="Hopper's Letter">Join the Party</button>
-</div>
-
-<div class="event-card">
-    <img src="event4.png" alt="Dear Billy..." class="event-img">
-    <h3 class="event-name">Dear Billy...</h3>
-    <p class="event-desc">Speech Writing</p>
-    <button class="join-btn" data-event="Dear Billy...">Join the Party</button>
-</div>
-
-<div class="event-card">
-    <img src="event5.jpeg" alt="Sorcerer's Wisdom" class="event-img">
-    <h3 class="event-name">Sorcerer's Wisdom</h3>
-    <p class="event-desc">Storytelling (using narrative devices)</p>
-    <button class="join-btn" data-event="Sorcerer's Wisdom">Join the Party</button>
-</div>
-
-<div class="event-card">
-    <img src="event6.jpeg" alt="Brennor's Bunker" class="event-img">
-    <h3 class="event-name">Brennor's Bunker</h3>
-    <p class="event-desc">What If</p>
-    <button class="join-btn" data-event="Brennor's Bunker">Join the Party</button>
-</div>
-
-<div class="event-card">
-    <img src="event7.png" alt="ClockTurn" class="event-img">
-    <h3 class="event-name">ClockTurn</h3>
-    <p class="event-desc">Twist of Tales</p>
-    <button class="join-btn" data-event="ClockTurn">Join the Party</button>
-</div>
-
-<div class="event-card">
-    <img src="event8.png" alt="Echoes in the WSQK" class="event-img">
-    <h3 class="event-name">Echoes in the WSQK</h3>
-    <p class="event-desc">Mushaira</p>
-    <button class="join-btn" data-event="Echoes in the WSQK">Join the Party</button>
-</div>
-
-<div class="event-card">
-    <img src="event9.png" alt="Ericas Chatterbox" class="event-img">
-    <h3 class="event-name">Erica's Chatterbox</h3>
-    <p class="event-desc">Extempore</p>
-    <button class="join-btn" data-event="Ericas Chatterbox">Join the Party</button>
-</div>
-
-<div class="event-card">
-    <img src="event10.png" alt="Hawkins Council" class="event-img">
-    <h3 class="event-name">Hawkins Council</h3>
-    <p class="event-desc">Youth Parliament</p>
-    <button class="join-btn" data-event="Hawkins Council">Join the Party</button>
-</div>
-
-<div class="event-card">
-    <img src="event11.png" alt="Battle of Starcourt Hall" class="event-img">
-    <h3 class="event-name">Battle of Starcourt Hall</h3>
-    <p class="event-desc">Debate</p>
-    <button class="join-btn" data-event="Battle of Starcourt Hall">Join the Party</button>
-</div>
-
-<div class="event-card">
-    <img src="event12.png" alt="The Upside Down Flip" class="event-img">
-    <h3 class="event-name">The Upside Down Flip</h3>
-    <p class="event-desc">Block and Tackle</p>
-    <button class="join-btn" data-event="The Upside Down Flip">Join the Party</button>
-</div>
-
-<div class="event-card">
-    <img src="event13.png" alt="Sixty Seconds to Eleven" class="event-img">
-    <h3 class="event-name">Sixty Seconds to Eleven</h3>
-    <p class="event-desc">JAM & Verteez</p>
-    <button class="join-btn" data-event="Sixty Seconds to Eleven">Join the Party</button>
-</div>
-
-<div class="event-card">
-    <img src="event14.png" alt="Flayer and the Flayed" class="event-img">
-    <h3 class="event-name">Flayer and the Flayed</h3>
-    <p class="event-desc">Personal Interview</p>
-    <button class="join-btn" data-event="Flayer and the Flayed">Join the Party</button>
-</div>
-
-<div class="event-card">
-    <img src="event15.png" alt="Creel Confessionals" class="event-img">
-    <h3 class="event-name">Creel Confessionals</h3>
-    <p class="event-desc">Dub it Out</p>
-    <button class="join-btn" data-event="Creel Confessionals">Join the Party</button>
-</div>
-
-<div class="event-card">
-    <img src="event16.png" alt="Vecna’s Trial" class="event-img">
-    <h3 class="event-name">Vecna’s Trial</h3>
-    <p class="event-desc">Courtroom Drama</p>
-    <button class="join-btn" data-event="Vecna’s Trial">Join the Party</button>
-</div>
-
-
-        </div>
-    </section>
-
-    <!-- CUSTOM CURSOR -->
-    <div class="cursor"></div>
-    <audio id="click-sound" preload="auto">
-        <source src="click.mp3" type="audio/mpeg">
-    </audio>
-</div>
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
+
 </html>
