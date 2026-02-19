@@ -61,11 +61,11 @@ if (clickSound) {
     let audioUnlocked = false;
     document.addEventListener('mousedown', () => {
         if (!audioUnlocked) {
-            clickSound.play().catch(() => { });
+            clickSound.play().catch(() => {});
             audioUnlocked = true;
         } else {
             clickSound.currentTime = 0;
-            clickSound.play().catch(() => { });
+            clickSound.play().catch(() => {});
         }
     });
 }
@@ -219,43 +219,5 @@ window.addEventListener("DOMContentLoaded", () => {
             });
         });
     });
-});
-
-// ================================
-// ORGANIZERS MODAL LOGIC
-// ================================
-window.addEventListener('DOMContentLoaded', () => {
-    const openBtn = document.getElementById('open-organizers');
-    const closeBtn = document.querySelector('.close-modal');
-    const modal = document.getElementById('organizers-modal');
-
-    if (openBtn && modal && closeBtn) {
-        openBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Disable scroll
-        });
-
-        const closeModal = () => {
-            modal.classList.remove('active');
-            document.body.style.overflow = 'auto'; // Enable scroll
-        };
-
-        closeBtn.addEventListener('click', closeModal);
-
-        // Close on clicking outside the content
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                closeModal();
-            }
-        });
-
-        // Close on ESC key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && modal.classList.contains('active')) {
-                closeModal();
-            }
-        });
-    }
 });
 
