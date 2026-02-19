@@ -52,13 +52,6 @@ updateCountdown(); // initial call
 /* ================================
    CUSTOM CURSOR
 ================================ */
-if (cursor) {
-    document.addEventListener('mousemove', (e) => {
-        cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
-    });
-    document.addEventListener('mousedown', () => cursor.classList.add('click'));
-    document.addEventListener('mouseup', () => cursor.classList.remove('click'));
-}
 
 /* ================================
    CLICK SOUND

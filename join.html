@@ -7,29 +7,7 @@
     <link rel="icon" type="image/png" href="cursor.png">
     <style>
         /* ===== GLOBAL STYLES ===== */
-        * {
-            cursor: none !important;
-        }
-
-        /* Main cursor dot */
-        .cursor {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 42px;
-            height: 42px;
-            background: url("cursor.png") no-repeat center;
-            background-size: contain;
-            pointer-events: none;
-            z-index: 10000;
-            transform: translate(-50%, -50%);
-            transition: transform 0.08s ease;
-        }
-
-        .cursor.click {
-            transform: translate(-50%, -50%) scale(0.75);
-        }
-
+        
         body {
             margin: 0;
             padding: 0;

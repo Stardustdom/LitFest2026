@@ -1,29 +1,11 @@
 
-* {
-    cursor: none !important;
-}
+
 
 /* Main cursor dot */
-.cursor {
-    position: fixed;
-    top: 0;
-    left: 0;
-
-    width: 42px;                 /* cursor size */
-    height: 42px;
-
-    background: url("cursor.png") no-repeat center;
-    background-size: contain;
-
-    pointer-events: none;
-    z-index: 10000;
-
-    transform: translate(-50%, -50%);
-    transition: transform 0.08s ease;
+* {
+    cursor: auto;
 }
-.cursor.click {
-    transform: translate(-50%, -50%) scale(0.75);
-}
+
 
 /* ================================
    0. CUSTOM FONT (TOP — REQUIRED)
@@ -315,7 +297,7 @@ video {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    cursor: none !important;
+   
 }
 
 html, body {
@@ -341,19 +323,6 @@ html, body {
 /* ================================
    CUSTOM CURSOR
 ================================ */
-.cursor {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 42px;
-    height: 42px;
-    background: url("cursor.png") no-repeat center;
-    background-size: contain;
-    pointer-events: none;
-    z-index: 10000;
-    transform: translate(-50%, -50%);
-    transition: transform 0.08s ease;
-}
 
 /* ================================
    SCROLL
@@ -950,5 +919,9 @@ body {
     .cursor {
         display: none !important;
     }
+    .hero-bg {
+        background: url("bgmob.jpeg") no-repeat center center / cover;
+    }
+
 }
 
