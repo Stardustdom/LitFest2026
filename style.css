@@ -1138,3 +1138,132 @@ body.no-scroll {
 html {
     scroll-behavior: smooth;
 }
+/* ============================= */
+/* FOOTER SECTION */
+/* ============================= */
+
+.footer-section {
+    background: #0f0f15;
+    color: #ffffff;
+    padding: 80px 8% 40px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Container Layout */
+.footer-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px;
+}
+
+/* Footer Columns */
+.footer-column h3 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.footer-description {
+    font-size: 14px;
+    line-height: 1.6;
+    opacity: 0.8;
+}
+
+/* Footer Links */
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: #ccc;
+    font-size: 14px;
+    transition: 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #ffffff;
+    padding-left: 6px;
+}
+
+/* Logo */
+.footer-logo {
+    max-width: 140px;
+    margin-bottom: 15px;
+}
+
+
+
+/* Venue */
+.venue-info p {
+    font-size: 14px;
+    margin-bottom: 6px;
+    opacity: 0.85;
+}
+
+/* Social Icons */
+.footer-socials {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.social-icon {
+    color: #ccc;
+    transition: 0.3s;
+}
+
+.social-icon:hover {
+    color: #ffffff;
+    transform: scale(1.1);
+}
+
+/* Bottom Section */
+.footer-bottom {
+    margin-top: 60px;
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 30px;
+}
+
+.organizer-btn {
+    padding: 12px 28px;
+    background: #ffffff;
+    color: #000;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    border-radius: 4px;
+    transition: 0.3s ease;
+}
+
+.organizer-btn:hover {
+    background: #ddd;
+}
+
+/* ============================= */
+/* RESPONSIVE */
+/* ============================= */
+
+@media (max-width: 992px) {
+    .footer-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-section {
+        padding: 60px 6% 30px;
+    }
+}
