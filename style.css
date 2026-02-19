@@ -771,6 +771,21 @@ body {
     letter-spacing: 1px;
 }
 
+@media (max-width: 768px) {
+
+    .countdown-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        justify-items: center;
+    }
+
+    .countdown-box {
+        width: 100%;
+        max-width: 140px;
+    }
+}
+
 /* Flicker animations */
 @keyframes flickerText {
     0%, 19%, 22%, 62%, 64%, 100% {
@@ -924,4 +939,202 @@ body {
     }
 
 }
+#home-page .main-header {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 92%;
+    height: 85px;
 
+    border-radius: 20px;
+
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    border: 1px solid rgba(255,255,255,0.15);
+
+    transition: all 0.4s ease;
+    z-index: 1000;
+}
+
+#home-page .main-header.shrink {
+    height: 65px;
+    backdrop-filter: blur(30px);
+}
+#home-page .nav-container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+}
+
+#home-page .nav-links {
+    display: flex;
+    gap: 35px;
+}
+
+#home-page .nav-links a {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    position: relative;
+    transition: 0.3s ease;
+}
+#home-page .nav-links a::after {
+    content: "";
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    height: 2px;
+    width: 0%;
+    background: white;
+    transition: width 0.3s ease;
+}
+
+#home-page .nav-links a:hover::after,
+#home-page .nav-links a.active::after {
+    width: 100%;
+}
+#home-page .cta-btn {
+    padding: 10px 22px;
+    border-radius: 30px;
+    background: linear-gradient(135deg, #ff416c, #ff4b2b);
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+
+    box-shadow: 0 0 20px rgba(255,75,43,0.6);
+    transition: all 0.3s ease;
+}
+
+#home-page .cta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 30px rgba(255,75,43,0.9);
+}
+#home-page .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+}
+
+#home-page .hamburger span {
+    width: 25px;
+    height: 3px;
+    background: white;
+    transition: 0.3s ease;
+}
+@media (max-width: 900px) {
+
+     #home-page .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;              /* hidden */
+        width: 45%;                /* 👈 less than half */
+        max-width: 320px;          /* prevents it from being too wide */
+        height: 100vh;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-end;     /* 👈 right align items */
+        padding-right: 40px;
+        gap: 35px;
+
+        background: rgba(0, 0, 0, 0.95);
+        backdrop-filter: blur(20px);
+
+        transition: right 0.4s ease;
+        z-index: 999;
+    }
+
+    #home-page .nav-links.active {
+        right: 0;
+    }
+
+    #home-page .nav-links a {
+        font-size: 20px;
+        text-align: right;         /* 👈 right align text */
+        width: 100%;
+    }
+
+    #home-page .hamburger {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        cursor: pointer;
+        z-index: 1001;
+    }
+
+    #home-page .hamburger span {
+        width: 28px;
+        height: 3px;
+        background: white;
+        transition: all 0.3s ease;
+    }
+    #home-page .nav-links {
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+}
+
+}
+#home-page .hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+}
+
+#home-page .hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+#home-page .hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+body.no-scroll {
+    overflow: hidden;
+}
+
+
+
+
+#home-page body {
+    padding-top: 100px;
+}
+#home-page #home-container {
+    padding-top: 140px;
+}
+#home-page .nav-links {
+    display: flex;
+    gap: 35px;
+    font-family: 'ITC Benguiat Std', serif;
+    
+}
+
+#home-page .nav-links a {
+    text-decoration: none;
+    color: white;
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+
+    position: relative;
+    transition: all 0.3s ease;
+}
+#home-page .nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0%;
+    height: 2px;
+    background: white;
+    transition: width 0.3s ease;
+}
+
+#home-page .nav-links a:hover::after {
+    width: 100%;
+}
+html {
+    scroll-behavior: smooth;
+}

@@ -176,48 +176,81 @@ joinBtns.forEach(btn => {
         window.location.href = `join.html?event=${eventName}`;
     });
 });
-/* ===== LOGO CLUSTER DYNAMIC LOAD (SAFE + VISIBLE) ===== */
-window.addEventListener("DOMContentLoaded", () => {
-    const logoCluster = document.getElementById("logo-cluster");
-    console.log("Logo cluster found:", logoCluster);
+window.addEventListener("scroll", () => {
+    const header = document.querySelector(".main-header");
+    if (!header) return;
 
-    if (!logoCluster) return;
+    if (window.scrollY > 50) {
+        header.classList.add("shrink");
+    } else {
+        header.classList.remove("shrink");
+    }
+});
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (!target) return;
 
-    const logoFiles = [
-        "logo1.png",
-        "logo2.png",
-        "logo3.png",
-        "logo4.png"
-    ];
+        target.scrollIntoView({ behavior: 'smooth' });
+    });
+});
 
-    logoFiles.forEach(file => {
-        const logoDiv = document.createElement("div");
-        logoDiv.className = "logo-item"; // force class
+window.addEventListener("scroll", () => {
+    let current = "";
 
-        const img = document.createElement("img");
-        img.src = `logo/${file}`;
-        img.alt = file;
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop - 150;
+        if (window.scrollY >= sectionTop) {
+            current = section.getAttribute("id");
+        }
+    });
 
-        // 🔥 FORCE VISIBILITY (important)
-        img.style.display = "block";
+    navLinks.forEach(link => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === `#${current}`) {
+            link.classList.add("active");
+        }
+    });
+});
 
-        logoDiv.appendChild(img);
-        logoCluster.appendChild(logoDiv);
 
-        logoDiv.addEventListener("mouseenter", () => {
-            document.querySelectorAll(".logo-item").forEach(item => {
-                item.classList.add("shrink");
-                item.classList.remove("active");
-            });
-            logoDiv.classList.add("active");
-            logoDiv.classList.remove("shrink");
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const hamburger = document.querySelector(".hamburger");
+    const navLinks = document.querySelector(".nav-links");
+    const navItems = document.querySelectorAll(".nav-links a");
+
+    if (!hamburger || !navLinks) return;
+
+    // Toggle drawer
+    hamburger.addEventListener("click", (e) => {
+        e.stopPropagation();
+        navLinks.classList.toggle("active");
+        hamburger.classList.toggle("active");
+        document.body.classList.toggle("no-scroll");
+    });
+
+    // ✅ Close when clicking a link
+    navItems.forEach(link => {
+        link.addEventListener("click", () => {
+            navLinks.classList.remove("active");
+            hamburger.classList.remove("active");
+            document.body.classList.remove("no-scroll");
         });
+    });
 
-        logoDiv.addEventListener("mouseleave", () => {
-            document.querySelectorAll(".logo-item").forEach(item => {
-                item.classList.remove("shrink", "active");
-            });
-        });
+    // ✅ Close when clicking outside
+    document.addEventListener("click", (e) => {
+        const isInsideNav = navLinks.contains(e.target);
+        const isHamburger = hamburger.contains(e.target);
+
+        if (!isInsideNav && !isHamburger) {
+            navLinks.classList.remove("active");
+            hamburger.classList.remove("active");
+            document.body.classList.remove("no-scroll");
+        }
     });
 });
 
