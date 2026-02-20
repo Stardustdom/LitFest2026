@@ -389,6 +389,78 @@
             gap: 40px;
         }
 
+        #advisors-grid {
+            grid-template-columns: repeat(3, 1fr);
+            justify-items: center;
+            margin-top: 30px;
+        }
+
+        #advisors-grid .team-card {
+            padding: 60px 40px;
+            width: 100%;
+            max-width: 350px;
+        }
+
+        #advisors-grid .team-img {
+            width: 160px;
+            height: 160px;
+        }
+
+        #advisors-grid .team-name {
+            font-size: 26px;
+        }
+
+        #fest-heads-grid {
+            grid-template-columns: repeat(3, 1fr);
+            justify-items: center;
+            margin-top: 30px;
+        }
+
+        #fest-heads-grid .team-card {
+            padding: 60px 40px;
+            width: 100%;
+            max-width: 350px;
+        }
+
+        #fest-heads-grid .team-img {
+            width: 160px;
+            height: 160px;
+        }
+
+        #fest-heads-grid .team-name {
+            font-size: 26px;
+        }
+
+        @media (max-width: 900px) {
+            #fest-heads-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+
+            #fest-heads-grid .team-card {
+                padding: 40px 20px;
+            }
+
+            #fest-heads-grid .team-img {
+                width: 130px;
+                height: 130px;
+            }
+        }
+
+        @media (max-width: 900px) {
+            #advisors-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+
+            #advisors-grid .team-card {
+                padding: 40px 20px;
+            }
+
+            #advisors-grid .team-img {
+                width: 130px;
+                height: 130px;
+            }
+        }
+
         /* Glass Card */
         .team-card {
             text-decoration: none;
@@ -420,12 +492,82 @@
             box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
         }
 
-
         .team-name {
-            font-size: 1.2rem;
-            font-weight: bold;
+            font-size: 22px;
+            font-weight: 600;
             margin-bottom: 10px;
         }
+
+        .event-title {
+            grid-column: 1 / -1;
+            /* makes title full width inside grid */
+            font-family: 'ITC Benguiat Std', serif;
+            /* Matching site typography */
+            font-size: 26px;
+            /* Slightly increased for emphasis */
+            color: #fff;
+            /* White text for contrast */
+            margin-top: 60px;
+            margin-bottom: 30px;
+            text-align: left;
+
+            /* Premium accents */
+            border-left: 4px solid #ff3c3c;
+            padding-left: 20px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+
+            /* Red Glow Effect matching the cards */
+            text-shadow: 0 0 10px rgba(255, 60, 60, 0.4);
+
+            /* Background tint to ground the title within the grid */
+            background: linear-gradient(90deg, rgba(255, 60, 60, 0.1), transparent);
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+        /* 2 Events per Row Layout */
+        .chairs-category-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            margin-top: 50px;
+        }
+
+        .event-block {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 20px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .event-chairs-subgrid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 1100px) {
+            .chairs-category-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        #tech-grid {
+            grid-template-columns: repeat(3, 1fr);
+            justify-items: center;
+        }
+
+        @media (max-width: 900px) {
+            #tech-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+        }
+
 
         .team-phone {
             font-size: 0.95rem;
@@ -561,40 +703,339 @@
 
 
     <section class="team-section">
+
         <h1 class="team-title">Contact Organizers</h1>
 
-        <div class="team-grid">
+        <!-- ================= EVENT LEADS ================= -->
+        <h2 class="category-title" style="font-weight: 800;">
+            OBSCURA FEST HEADS
+        </h2>
+        <div class="team-grid" id="fest-heads-grid">
 
-            <!-- Organizer 1 -->
+            <!-- Lead 1 -->
+            <a href="#" class="team-card">
+                <img src="images/member3.jpg" class="team-img" alt="Organizer">
+                <div class="team-name">Arjun Das</div>
+                <div class="team-phone">+91 88887 77766</div>
+            </a>
+
+            <!-- Lead 2 -->
             <a href="https://wa.me/9330549983" class="team-card" target="_blank">
                 <img src="ORGANIZERS IMAGES/PRANJAL.jpeg" class="team-img" alt="Organizer">
                 <div class="team-name">Pranjal Basu</div>
                 <div class="team-phone">+91 93305 49983</div>
             </a>
 
-            <!-- Organizer 2 -->
+            <!-- Lead 3 -->
             <a href="https://wa.me/9088998444" class="team-card" target="_blank">
-                <img src="ORGANIZERS IMAGES\IMG-20251119-WA0038(1) - Kevin Domingo.jpg" class="team-img"
+                <img src="ORGANIZERS IMAGES/IMG-20251119-WA0038(1) - Kevin Domingo.jpg" class="team-img"
                     alt="Organizer">
-                <div class="team-name">Kevin Steve Do</div>
+                <div class="team-name">Kevin Steve Domingo</div>
                 <div class="team-phone">+91 90889 98444</div>
             </a>
-
-            <!-- Organizer 3 -->
-            <a href="https://wa.me/918888777766" class="team-card" target="_blank">
-                <img src="images/member3.jpg" class="team-img" alt="Organizer">
-                <div class="team-name">Arjun Das</div>
-                <div class="team-phone">+91 88887 77766</div>
+            <a href="https://wa.me/9062995656" class="team-card">
+                <img src="ORGANIZERS IMAGES/CF2A26D8-6C8A-4ED0-8FFD-71FFC0CF7202 - Dwaipayan Chanda.png"
+                    class="team-img" alt="Organizer">
+                <div class="team-name">Dwaipayan Chanda</div>
+                <div class="team-phone">+91 90629 95656</div>
+            </a>
+            <a href="https://wa.me/7980853529" class="team-card">
+                <img src="ORGANIZERS IMAGES/JPEG_20260102_140053_8032187393584343271 - Debendra Banerjee.jpg"
+                    class="team-img" alt="Organizer">
+                <div class="team-name">Deb Banerjee</div>
+                <div class="team-phone">+91 79808 53529</div>
+            </a>
+            <a href="https://wa.me/7278130296" class="team-card">
+                <img src="ORGANIZERS IMAGES/shreyam da.jpeg" class="team-img" alt="Organizer">
+                <div class="team-name">Shreyam Das</div>
+                <div class="team-phone">+91 72781 30296</div>
             </a>
 
-            <!-- Organizer 4 -->
-            <a href="https://wa.me/917654321098" class="team-card" target="_blank">
-                <img src="images/member4.jpg" class="team-img" alt="Organizer">
-                <div class="team-name">Sneha Roy</div>
-                <div class="team-phone">+91 76543 21098</div>
-            </a>
 
         </div>
+
+
+
+        <!-- ================= Advisors ================= -->
+        <h2 class="category-title" style="font-weight: 800;">
+            ADVISORS
+        </h2>
+        <div class="team-grid" id="advisors-grid">
+
+            <a href="https://wa.me/9062995656" class="team-card">
+                <img src="ORGANIZERS IMAGES/CF2A26D8-6C8A-4ED0-8FFD-71FFC0CF7202 - Dwaipayan Chanda.png"
+                    class="team-img" alt="Organizer">
+                <div class="team-name">Dwaipayan Chanda</div>
+                <div class="team-phone">+91 90629 95656</div>
+            </a>
+            <a href="https://wa.me/7980853529" class="team-card">
+                <img src="ORGANIZERS IMAGES/JPEG_20260102_140053_8032187393584343271 - Debendra Banerjee.jpg"
+                    class="team-img" alt="Organizer">
+                <div class="team-name">Deb Banerjee</div>
+                <div class="team-phone">+91 79808 53529</div>
+            </a>
+            <a href="https://wa.me/7278130296" class="team-card">
+                <img src="ORGANIZERS IMAGES/shreyam da.jpeg" class="team-img" alt="Organizer">
+                <div class="team-name">Shreyam Das</div>
+                <div class="team-phone">+91 72781 30296</div>
+            </a>
+
+            <a href="https://wa.me/6290887016" class="team-card">
+                <img src="ORGANIZERS IMAGES/20260207_152147 - Rishita Saha.jpg" class="team-img" alt="Organizer">
+                <div class="team-name">Rishita Saha</div>
+                <div class="team-phone">+91 62908 87016</div>
+            </a>
+            <a href="https://wa.me/7980815043" class="team-card">
+                <img src="ORGANIZERS IMAGES/20250208_160642 - Debarati Ghosh.jpg" class="team-img" alt="Organizer">
+                <div class="team-name">Debarati Ghosh</div>
+                <div class="team-phone">+91 79808 15043</div>
+            </a>
+            <a href="https://wa.me/9433800468" class="team-card">
+                <img src="ORGANIZERS IMAGES/IMG_3273 - Sushmita Kumari Mahato.jpeg" class="team-img" alt="Organizer">
+                <div class="team-name">Sushmita K Mahato</div>
+                <div class="team-phone">+91 94338 00468</div>
+            </a>
+
+
+
+
+
+            <!-- Add 2 more tech members same pattern -->
+
+        </div>
+
+
+        <h2 class="category-title" style="font-weight: 800;">
+            CHAIRS (Event-Wise)
+        </h2>
+        <div class="chairs-category-container">
+
+            <!-- Row 1 -->
+            <div class="event-block">
+                <div class="event-title">Creative Writing - Hawkins Headlines</div>
+                <div class="event-chairs-subgrid">
+                    <a href="#" class="team-card">
+                        <div class="team-name">Sreejani</div>
+                    </a>
+                    <a href="#" class="team-card">
+                        <div class="team-name">Akansha</div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="event-block">
+                <div class="event-title">Relay Story Writing - The Crawls</div>
+                <div class="event-chairs-subgrid">
+                    <a href="#" class="team-card">
+                        <div class="team-name">Meghna</div>
+                    </a>
+                    <a href="#" class="team-card">
+                        <div class="team-name">Tomojit</div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Row 2 -->
+            <div class="event-block">
+                <div class="event-title">Content Writing - Hopper's Letter</div>
+                <div class="event-chairs-subgrid">
+                    <a href="#" class="team-card">
+                        <div class="team-name">Sayak</div>
+                    </a>
+                    <a href="#" class="team-card">
+                        <div class="team-name">Ribhu</div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="event-block">
+                <div class="event-title">Speech Writing - Dear Billy...</div>
+                <div class="event-chairs-subgrid">
+                    <a href="#" class="team-card">
+                        <div class="team-name">Swapnaneel</div>
+                    </a>
+                    <a href="#" class="team-card">
+                        <div class="team-name">Bhargav</div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Row 3 -->
+            <div class="event-block">
+                <div class="event-title">Storytelling - Sorcerors Wisdom</div>
+                <div class="event-chairs-subgrid">
+                    <a href="#" class="team-card">
+                        <div class="team-name">Megha</div>
+                    </a>
+                    <a href="#" class="team-card">
+                        <div class="team-name">Soubhik</div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="event-block">
+                <div class="event-title">What If - Brenors Bunker</div>
+                <div class="event-chairs-subgrid">
+                    <a href="#" class="team-card">
+                        <div class="team-name">Agniv</div>
+                    </a>
+                    <a href="#" class="team-card">
+                        <div class="team-name">Sayak</div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Row 4 -->
+            <div class="event-block">
+                <div class="event-title">Twist of tales - ClockTurn</div>
+                <div class="event-chairs-subgrid">
+                    <a href="#" class="team-card">
+                        <div class="team-name">Akansha</div>
+                    </a>
+                    <a href="#" class="team-card">
+                        <div class="team-name">Sajani</div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="event-block">
+                <div class="event-title">Mushaira - Echoes in the WSQK</div>
+                <div class="event-chairs-subgrid">
+                    <a href="#" class="team-card">
+                        <div class="team-name">Nandini</div>
+                    </a>
+                    <a href="#" class="team-card">
+                        <div class="team-name">Priya</div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Row 5 -->
+            <div class="event-block">
+                <div class="event-title">Extempore - Ericas Chatterbox</div>
+                <div class="event-chairs-subgrid">
+                    <a href="#" class="team-card">
+                        <div class="team-name">Meghna</div>
+                    </a>
+                    <a href="#" class="team-card">
+                        <div class="team-name">Ribhu</div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="event-block">
+                <div class="event-title">Youth Parliament - Hawkins Council</div>
+                <div class="event-chairs-subgrid">
+                    <a href="#" class="team-card">
+                        <div class="team-name">Rishob</div>
+                    </a>
+                    <a href="#" class="team-card">
+                        <div class="team-name">Atmadeep</div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Row 6 -->
+            <div class="event-block">
+                <div class="event-title">Debate - Battle of Starcourt hall</div>
+                <div class="event-chairs-subgrid">
+                    <a href="#" class="team-card">
+                        <div class="team-name">Megha</div>
+                    </a>
+                    <a href="#" class="team-card">
+                        <div class="team-name">Agniv</div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="event-block">
+                <div class="event-title">Block and Tackle - The Upside Down Flip</div>
+                <div class="event-chairs-subgrid">
+                    <a href="#" class="team-card">
+                        <div class="team-name">Tomojit</div>
+                    </a>
+                    <a href="#" class="team-card">
+                        <div class="team-name">Srijani</div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Row 7 -->
+            <div class="event-block">
+                <div class="event-title">JAM & Verteez - Sixty Seconds to Eleven</div>
+                <div class="event-chairs-subgrid">
+                    <a href="#" class="team-card">
+                        <div class="team-name">Nandini</div>
+                    </a>
+                    <a href="#" class="team-card">
+                        <div class="team-name">Priya</div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="event-block">
+                <div class="event-title">Personal Interview - Flayer and the Flayed</div>
+                <div class="event-chairs-subgrid">
+                    <a href="#" class="team-card">
+                        <div class="team-name">Bhargav</div>
+                    </a>
+                    <a href="#" class="team-card">
+                        <div class="team-name">Souvik</div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Row 8 -->
+            <div class="event-block">
+                <div class="event-title">Dub it out - Creel Confessionals</div>
+                <div class="event-chairs-subgrid">
+                    <a href="#" class="team-card">
+                        <div class="team-name">Swapnaneel</div>
+                    </a>
+                    <a href="#" class="team-card">
+                        <div class="team-name">Sajani</div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="event-block">
+                <div class="event-title">Courtroom Drama - Vecna’s Trial</div>
+                <div class="event-chairs-subgrid">
+                    <a href="#" class="team-card">
+                        <div class="team-name">TBA</div>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ================= TECH TEAM ================= -->
+        <h2 class="category-title" style="font-weight: 800;">
+            TECH TEAM
+        </h2>
+        <div class="team-grid" id="tech-grid">
+
+            <a href="https://wa.me/7439134600" class="team-card">
+                <img src="ORGANIZERS IMAGES/MEGHA.png" class="team-img" alt="Organizer">
+                <div class="team-name">Megha Bhattacharjee</div>
+                <div class="team-phone">+91 74391 34600</div>
+            </a>
+            <a href="https://wa.me/7439989477" class="team-card">
+                <img src="ORGANIZERS IMAGES/BHARGAB.png" class="team-img" alt="Organizer">
+                <div class="team-name">Bhargab Banerjee</div>
+                <div class="team-phone">+91 74399 89477</div>
+            </a>
+
+            <a href="https://wa.me/9883637666" class="team-card">
+                <img src="ORGANIZERS IMAGES/ARFA.png" class="team-img" alt="Organizer">
+                <div class="team-name">Arfa Ansari</div>
+                <div class="team-phone">+91 98836 37666</div>
+            </a>
+
+            <!-- Add 2 more tech members same pattern -->
+
+        </div>
+
     </section>
     <!-- FOOTER SECTION -->
     <footer class="footer-section">
