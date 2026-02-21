@@ -187,12 +187,16 @@ window.addEventListener("scroll", () => {
     }
 });
 document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', function(e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (!target) return;
-
-        target.scrollIntoView({ behavior: 'smooth' });
+    link.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        // Only prevent default if it's an internal link and the target exists
+        if (href.startsWith('#')) {
+            const target = document.querySelector(href);
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
     });
 });
 
