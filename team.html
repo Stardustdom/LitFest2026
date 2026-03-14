@@ -24,7 +24,7 @@
 
             border-radius: 20px;
 
-            background: rgba(255, 255, 255, 0.08);
+            background: transparent;
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
 
@@ -76,21 +76,88 @@
             width: 100%;
         }
 
-        #home-page .cta-btn {
+        #home-page .register-btn {
+            position: relative;
             padding: 10px 22px;
-            border-radius: 30px;
-            background: linear-gradient(135deg, #ff416c, #ff4b2b);
-            color: white;
+            font-family: 'ITC Benguiat Std', serif;
+            font-size: 18px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
             text-decoration: none;
-            font-weight: 600;
-
-            box-shadow: 0 0 20px rgba(255, 75, 43, 0.6);
-            transition: all 0.3s ease;
+            color: #fff;
+            background: linear-gradient(270deg, #ff0000, #000000, #8b0000);
+            background-size: 600% 600%;
+            border-radius: 40px;
+            border: 2px solid #ff0000;
+            box-shadow: 0 0 10px #ff0000,
+                0 0 20px #ff0000,
+                0 0 40px rgba(255, 0, 0, 0.6);
+            transition: 0.4s ease-in-out;
+            overflow: hidden;
+            display: inline-block;
+            animation: pulseGlow 1.5s infinite, gradientMove 6s ease infinite;
         }
 
-        #home-page .cta-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 0 30px rgba(255, 75, 43, 0.9);
+        #home-page .register-btn:hover {
+            transform: scale(1.1);
+            background: #ff0000;
+            box-shadow: 0 0 20px #ff0000,
+                0 0 40px #ff0000,
+                0 0 60px rgba(255, 0, 0, 0.9);
+        }
+
+        #home-page .register-btn:active {
+            transform: scale(0.95);
+        }
+
+        #home-page .register-btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg,
+                    transparent,
+                    rgba(255, 255, 255, 0.6),
+                    transparent);
+            transition: 0.5s;
+        }
+
+        #home-page .register-btn:hover::before {
+            left: 100%;
+        }
+
+        @keyframes pulseGlow {
+            0% {
+                box-shadow: 0 0 10px #ff0000,
+                    0 0 20px #ff0000;
+            }
+
+            50% {
+                box-shadow: 0 0 25px #ff0000,
+                    0 0 50px rgba(255, 0, 0, 0.8);
+            }
+
+            100% {
+                box-shadow: 0 0 10px #ff0000,
+                    0 0 20px #ff0000;
+            }
+        }
+
+        @keyframes gradientMove {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
         #home-page .hamburger {
@@ -144,6 +211,10 @@
                 text-align: right;
                 /* 👈 right align text */
                 width: 100%;
+                font-family: 'ITC Benguiat Std', serif;
+                font-weight: bold;
+                text-shadow: 0 0 8px rgba(255, 0, 0, 0.8);
+                text-transform: uppercase;
             }
 
             #home-page .hamburger {
@@ -204,10 +275,12 @@
         #home-page .nav-links a {
             text-decoration: none;
             color: white;
+            font-family: 'ITC Benguiat Std', serif;
             font-size: 22px;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.8), 0 0 15px rgba(255, 0, 0, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 1px;
             position: relative;
             transition: all 0.3s ease;
         }
@@ -236,7 +309,7 @@
         /* ============================= */
 
         .footer-section {
-            background: #0f0f15;
+            background: transparent;
             color: #ffffff;
             padding: 80px 8% 40px;
             position: relative;
@@ -683,7 +756,7 @@
 
             </nav>
 
-            <a href="home.html#events" class="cta-btn">Register Now</a>
+            <a href="home.html#events" class="register-btn">Register Now</a>
 
             <div class="hamburger">
                 <span></span>
