@@ -26,13 +26,17 @@ app.get("/", (req, res) => {
 // =======================
 // MONGODB CONNECTION
 // =======================
-mongoose
-  .connect(process.env.MONGO_URI)
-  .then(() => console.log("✅ MongoDB Connected"))
-  .catch((err) => {
-    console.error("❌ MongoDB error:", err.message);
-    process.exit(1); // Stop app if DB fails in production
-  });
+if (!process.env.MONGO_URI) {
+  console.warn("⚠️ MONGO_URI not found in .env. Database features will be disabled.");
+} else {
+  mongoose
+    .connect(process.env.MONGO_URI)
+    .then(() => console.log("✅ MongoDB Connected"))
+    .catch((err) => {
+      console.error("❌ MongoDB error:", err.message);
+      console.warn("⚠️ Continuing without database...");
+    });
+}
 
 // =======================
 // COUNTER SCHEMA
