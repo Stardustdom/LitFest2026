@@ -4,6 +4,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const path = require("path");
+const https = require("https");
+const selfsigned = require("selfsigned");
 const addToSheet = require("./sheets");
 
 const app = express();
@@ -123,6 +125,15 @@ app.get("/check-institution", async (req, res) => {
 // =======================
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => {
-  console.log(`🚀 Server running on port ${PORT}`);
+// Generate a self-signed certificate on the fly
+const attrs = [{ name: 'commonName', value: 'localhost' }];
+const pems = selfsigned.generate(attrs, { days: 365, keySize: 2048 });
+
+const sslOptions = {
+  key: pems.private,
+  cert: pems.cert
+};
+
+https.createServer(sslOptions, app).listen(PORT, () => {
+  console.log(`🚀 HTTPS Server running on port ${PORT}`);
 });

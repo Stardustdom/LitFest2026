@@ -258,6 +258,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+
 // ================================
 // ORGANIZERS MODAL LOGIC
 // ================================
